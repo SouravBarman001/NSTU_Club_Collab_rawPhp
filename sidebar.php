@@ -13,6 +13,8 @@
                     </a>
                     <a href="#" class="nav_link"> <img src="images/feed.png" alt="" style="width:25px;"> <span class="nav_name">Feed</span> </a>
                     <a href="#" class="nav_link"> <img src="images/joined.png" alt="" style="width:25px;"> <span class="nav_name">Joined Club</span> </a>
+                    <!-- <a href="#" class="nav_link"> <img src="images/joined.png" alt="" style="width:25px;"> <span class="nav_name">Activities</span> </a> -->
+
                 </div>
             </div>
 
