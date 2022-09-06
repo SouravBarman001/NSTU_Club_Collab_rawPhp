@@ -31,6 +31,10 @@
                     <a href="./manageMember.php" id="activity" class="nav-link px-0 align-middle">
                       <img src="./images/manage.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Manage member</span></a>
                 </li>  
+                <li>
+                    <a href="./manageApplicant.php" id="activity" class="nav-link px-0 align-middle">
+                      <img src="./images/applicant.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Manage applicant</span></a>
+                </li>  
             </ul>
              
         </div>
