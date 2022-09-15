@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','club') or die('connection failed');
+$conn = mysqli_connect('localhost','root','','clubcollab') or die('connection failed');
  
 
 ?>

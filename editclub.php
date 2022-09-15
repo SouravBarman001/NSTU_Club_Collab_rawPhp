@@ -18,12 +18,10 @@
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/activity.css">
     <link rel="stylesheet" href="css/tableCss/table.css">
+    <link rel="stylesheet" href="./css/tableCss/editclub.css">
 
 
 
-
-    
-    
     <title>user Structure</title>
 </head>
 <body> 
@@ -45,10 +43,93 @@
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection"> 
     
-<!-- Manage Applicant design -->
-<?php include './manageApplicantDesign.php';?>
+<!-- edit club design -->
+<?php include './editClubDesign.php';?>
+
+<?php
+include './config.php';
 
 
+// Check connection
+if ($conn->connect_error) 
+{
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+if(isset($_POST["submit"])){
+
+  if(isset($_FILES["image"]["name"])){
+    
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+
+    $imageName = $_FILES["image"]["name"];
+    $imageSize = $_FILES["image"]["size"];
+    $tmpName = $_FILES["image"]["tmp_name"];
+
+    // Image validation
+    $validImageExtension = ['jpg', 'jpeg', 'png'];
+    $imageExtension = explode('.', $imageName);
+    $imageExtension = strtolower(end($imageExtension));
+    if (!in_array($imageExtension, $validImageExtension)){
+      echo
+      "
+      <script>
+        alert('Invalid Image Extension');
+        document.location.href = './editclub.php';
+      </script>
+      ";
+    }
+    elseif ($imageSize > 5000000 ){
+      echo
+      "
+      <script>
+        alert('Image Size Is Too Large');
+        document.location.href = './editclub.php';
+      </script>
+      ";
+    }
+    else{
+      $newImageName = $name . " - " . date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
+      $newImageName .= '.' . $imageExtension;
+      $query = "UPDATE clubs SET club_image = '$newImageName' WHERE club_id = $id";
+      mysqli_query($conn, $query);
+      move_uploaded_file($tmpName, 'clubimages/' . $newImageName);
+      echo
+      "
+      <script>
+      document.location.href = './editclub.php';
+      </script>
+      ";
+    }
+  }
+
+  }
+     
+  // Save changes for descriptions
+
+  if(isset($_POST["save_changes"])){
+
+    $id = $_POST["id"];
+    $textarea = $_POST["textarea"];
+
+    $query = "UPDATE club SET club_description = '$textarea' WHERE club_id = $id";
+    mysqli_query($conn, $query);
+    echo
+    "
+    <script>
+    document.location.href = './editclub.php';
+    </script>
+    ";
+
+
+  }
+
+
+
+
+?>
 </div>
 
 
