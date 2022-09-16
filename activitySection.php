@@ -90,9 +90,7 @@ isrunning = false;
 page_no++;
 });
 
-
 }
-
 </script>
 
 

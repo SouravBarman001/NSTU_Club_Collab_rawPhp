@@ -18,7 +18,6 @@ foreach($data as $sub){
 
 <div class="f-card">
             <div class="headers">
-                <div class="options"><i class="fa fa-chevron-down"></i></div>
                 <img class="co-logo" src="./clubimages/sourav.jpg" />
                 
                 <div class="co-name"><a href="#"><?=$sub['id']?></a></div>
